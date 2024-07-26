@@ -95,6 +95,7 @@
                     <th>Last Name</th>
                     <th>email</th>
                     <th>Delete</th>
+                    <th>Update</th>
                 </tr>
                 </thead>
 
@@ -107,6 +108,11 @@
                         <td>
                             <form method="post" action="/deleteUser">
                                 <button type="submit" name="id" th:value="${user.id}">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="get" action="/updateUser">
+                                <button type="submit" name="id" th:value="${user.id}">Update</button>
                             </form>
                         </td>
                     </tr>

@@ -2,10 +2,8 @@ package ru.nizhnikova.springforkata.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.nizhnikova.springforkata.model.User;
 import ru.nizhnikova.springforkata.service.UserService;
 
@@ -44,6 +42,15 @@ public class UsersController {
             userService.update(user);
         }
         return "redirect:/users";
+    }
+
+    @GetMapping(value = "/updateUser")
+    public ModelAndView updateUserbyId(@RequestParam("id") Long id) {
+        ModelAndView mav = new ModelAndView("userUpdate");
+        User user = userService.findById(id);
+        mav.addObject("user", user);
+
+        return mav;
     }
 
 }
